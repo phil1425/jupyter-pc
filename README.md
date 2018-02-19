@@ -13,30 +13,29 @@ Das von diesem Repository verwaltete Package 'jinja_latex' enthält einige Funkt
 
 #Inhalt
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round"-->
+<!-- MarkdownTOC -->
 
-- [Voraussetzungen][voraussetzungen]
-- [Testversion][testversion]
-- [Setup][setup]
-    - [Texteditor][texteditor]
-    - [LaTeX][latex]
-    - [Python][python]
-- [Workflow][workflow]
-- [Einführung in Python][einf%C3%BChrung-in-python]
-    - [Arbeiten mit dem Interpreter][arbeiten-mit-dem-interpreter]
-    - [Datentypen und Variablen:][datentypen-und-variablen]
-    - [Operatoren][operatoren]
-    - [Listen][listen]
-    - [Dictionaries][dictionaries]
-    - [Control Flow: if und for][control-flow-if-und-for]
-    - [Die List comprehension][die-list-comprehension]
-    - [Funktionen][funktionen]
-    - [Datenausgabe][datenausgabe]
-- [Beispiele][beispiele]
+- Voraussetzungen
+- Testversion
+- Setup
+    - Texteditor
+    - LaTeX
+    - Python
+- Workflow
+- Einführung in Python
+    - Arbeiten mit dem Interpreter
+    - Datentypen und Variablen:
+    - Operatoren
+    - Listen
+    - Dictionaries
+    - Control Flow: if und for
+    - Die List comprehension
+    - Funktionen
+    - Datenausgabe
+- Beispiele
 
 <!-- /MarkdownTOC -->
 
-<a name="voraussetzungen"></a>
 ## Voraussetzungen
 * Grundkenntnisse in einer Programmiersprache sind hilfreich
 * Grundkenntnisse in LaTeX (muss man wahrscheinlich sowieso lernen)
@@ -44,19 +43,16 @@ Das von diesem Repository verwaltete Package 'jinja_latex' enthält einige Funkt
 funktioniert oft nicht alles auf Anhieb.
 
 
-<a name="testversion"></a>
 ## Testversion
 Jupyter Notebook lässt sich auf der Website des Projekts online ausprobieren. (jupyter.org) 
 
 
-<a name="setup"></a>
 ## Setup
 Es werden drei unterschiedliche Programme benötigt:
 * Einen Texteditor zum schreiben der LaTeX-Vorlage
 * Eine aktuelle LaTeX-Distribution
 * Eine aktuelle Python- Distribution
 
-<a name="texteditor"></a>
 ### Texteditor
 Als Editor kann von Microsoft Editor (Windows) oder gedit (ubuntu) bis hin zu TeXMaker eigentlich jedes alles benutzt werden. Viele editoren haben aber Features, die beim schreiben von LaTeX-Dokumenten helfen. Hier einige beispiele:
 
@@ -67,7 +63,6 @@ Empfohlene Pakete: `latex-autocomplete` `latex`
 * TeXMaker:
 Zeigt auf der einen Seite den Code und auf der anderen das fertige PDF, kommt schon fertig mit allem was man braucht, einfach zu bedienen.
 
-<a name="latex"></a>
 ### LaTeX
 Wer sich einen komplett-Editor wie TeXMaker runtergeladen hat muss sich darum nicht mehr kümmern.
 Ansonsten
@@ -75,24 +70,20 @@ Ansonsten
 * Mac: link
 * Ubuntu: `sudo apt install texlive-full`
 
-<a name="python"></a>
 ### Python
 Am einfachsten installiert sich Anaconda: Link herunterladen und dem Installer folgen.
 
 Falls schon python3 und pip installiert ist, lässt sich auch mit `pip3 install jupyter-notebook matplotlib numpy jinja2 scipy uncertainties` installieren.
 
 
-<a name="workflow"></a>
 ## Workflow
 Das Protokoll wird in zwei Teilen geschrieben: Das LaTeX-Template und der Python-code.
 In das Template kommt all das rein, was man normalerweise in ein Protokoll schreiben würde, also Deckblatt, Theorieteil, Formeln etc. Aber anstatt Messwerten, Tabellen und Grafiken werden nur vermerke auf den Python-teil gemacht. Ein hilfsProgramm liest später den Code und das Template ein und schreibt an die markierten stellen die von Python generierten Werte und Tabellen. Das entstehende .tex-dokument lässt sich dann ganz normal in ein PDF konvertieren. Das klingt erst mal umständlich, aber der Großteil davon passiert automatisch.
 * Beispiel: Ihr habt ein template `vorlage.tex`. darin steht schon der Theorieteil. Jetzt soll das Messergebnis als Tabelle dargestellt werden: Ihr öffnet `notebook.ipnb` in jupyter und nennt dort das Ergebnis eurer berechnung `result`. In `vorlage.tex` schreibt ihr dann an die Stelle, an der ihr die tabelle haben wollt `\VAR{result}` und führt das jupyter notebook aus. Das generiert dann von alleine `output.tex`, in dem nun das ergebnis als zahl eingefügt wurde. Ändert man einen Teil der Berechnung oder die ursprünglichen Messwerte, dann ändert sich auch das Ergebnis in `output.pdf`. Vor allem für große tabellen und zwischenergebnisse ist das Hifreich
 
-<a name="einf%C3%BChrung-in-python"></a>
 ## Einführung in Python
 Dieser Teil soll die Basics erklären, die notwendig sind um die Messwerte in jupyter Python auszuwerten.
 
-<a name="arbeiten-mit-dem-interpreter"></a>
 ### Arbeiten mit dem Interpreter
 Bei der Installation wurde ein Python-Interpreter mitgeliefert. Besonders Praktisch ist die iPython-Konsole. In die Konsole lässt sich Python-Code eingeben, der beim bestätigen direkt ausgeführt wird. Als ersten Test öffnen wir die Konsole und tippen ein:
 ```
@@ -108,7 +99,6 @@ Ich empfehle beim lesen dieses Kapitels einige der Beispiele in die Konsole zu s
 
 > mit der "Pfeil nach oben"- Taste lässt sich die letzte Eingabe wiederholen.  
 
-<a name="datentypen-und-variablen"></a>
 ### Datentypen und Variablen: 
 Variablen sind Platzhalter für Werte: man legt einen Buchstaben oder einen namen fest, dem man dann einen Wert zuweisen kann. Der Wert kann dabei eine Zahl, aber auch ein string, liste oder Funktion sein
 ```
@@ -146,7 +136,6 @@ In Python werden Datentypen implizit gesetzt, das heißt das programm sucht sich
 >>> int(True)
 1
 ```
-<a name="operatoren"></a>
 ### Operatoren
 Der Zuweisungs-Operator `=` weist der Variable *davor* den wert *dahinter* zu
 
@@ -223,7 +212,6 @@ False
 ```
 Gibt True zurück, wenn das jeweilige Element Teil der Liste ist, ansonsten False.
 
-<a name="listen"></a>
 ### Listen
 Der wichtigste zusammengesetzte Datentyp für uns ist die liste. In einer Liste können mehrere Instanzen des gleichen Datentyps aneinander gehängt werden. Das ist hilfreich, wenn man zum Beispiel eine reihe an Messwerten genommen hat. Die liste steht in eckigen klammern und die einzelnen Elemente sind mit Kommata getrennt. Es lassen sich auch listen verschachteln.
 ```
@@ -275,7 +263,6 @@ Hier noch ein paar nützliche Funktionen
 
 >Strings sind auch Listen, das heißt `'hallo'[2]` gibt ein 'l' zurück
 
-<a name="dictionaries"></a>
 ### Dictionaries
 Dircionaries sind auch zusammengesetzte Datentypen, aber im gegensatz zu listen müssen sie nicht aus demselben datentyp zusammen gesetzt sein. Außerdem sind die Werte nicht nach Index, sonder nach ihrem namen, dem so genannten 'key' sortiert. Ein Dictionary ist nichts anderes als eine Ansammlung aus key:value - Paaren. Man definiert es mit geschweiften Klammern.
 ```
@@ -312,7 +299,6 @@ Es lassen sich auch Listen aus Dictionaries machen:
 >>> alles = [data_1, data_2]
 ```
 
-<a name="control-flow-if-und-for"></a>
 ### Control Flow: if und for
 Diese Funktionen steuern, wann und wie oft ein Teil des Programms ausgeführt wird.
 Wichtig: Hier ist das einrücken ein muss, ansonsten funktioniert das Programm nicht richtig
@@ -380,7 +366,6 @@ Mit der for-Schleife kann man beispielsweise eine Funktion auf eine reihe an dat
 >>> for i in messung_celsuis:
 ... messung_kelvin.append(i+273.15)
 ```
-<a name="die-list-comprehension"></a>
 ### Die List comprehension
 Diese funktion kan man für quasi alles verwenden, sie kombiniert die Liste, for und if kompakt in einer Zeile.
 
@@ -418,7 +403,6 @@ Hier einige Beispiele:
 [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 ```
 
-<a name="funktionen"></a>
 ### Funktionen
 Funktionen sind stücke von code, die an einer anderen stelle aufgerufen werden können. Man kann ihnen variablen übergeben und sie können auch variablen zurück geben.
 
@@ -455,7 +439,6 @@ def f(n):
         return n*f(n-1)
 ```
 
-<a name="datenausgabe"></a>
 ### Datenausgabe
 Innerhalb von LaTeX lässt sich mit bestimmten markierungen Python-Code und Variablen einbinden.
 Variablen werden mit `\VAR{}` eingabunden. Das Programm kopiert dann einfach den Wert für die jeweilige variable dort hin.
@@ -526,7 +509,6 @@ Um eine Tabelle in das LaTeX-Dokument einzubinden lässt sich am besten die von 
 ```
 beim nächsten ausführen des Notebooks wird dann automatisch die tabelle generiert.
 
-<a name="beispiele"></a>
 ## Beispiele
 Einige beispiele finden sich im gleichnamigen order. 
 Zum anschauen einfach das ganze Repository runterladen und und die .ipynb-Dateien mit jupyter notebook öffnen
