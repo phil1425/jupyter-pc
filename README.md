@@ -528,3 +528,5 @@ beim nächsten ausführen des Notebooks wird dann automatisch die tabelle generi
 
 <a name="beispiele"></a>
 ## Beispiele
+Einige beispiele finden sich im gleichnamigen order. 
+Zum anschauen einfach das ganze Repository runterladen und und die .ipynb-Dateien mit jupyter notebook öffnen
