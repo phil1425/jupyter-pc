@@ -11,7 +11,7 @@ die Vorlage eingebettet werden.
 Dieses Skript soll den Einstieg in diesen Workflow erleichtern.
 Das von diesem Repository verwaltete Package 'jinja_latex' enthält einige Funktionen, die dabei helfen. Dokumentation für das Package finden sich in dem zum Repository gehörigen Wiki. Sollten bei der Verwendung Probleme auftauchen kann auf der 'Issues'-Seite eine Problembericht erstellt werden.
 
-#Inhalt
+# Inhalt
 
 <!-- MarkdownTOC -->
 
