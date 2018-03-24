@@ -10,13 +10,8 @@ ein fertiges LaTeX-Dokument erstellen. Die im Notebook verwendeten Werte, Tabell
 die Vorlage eingebettet werden.
 
 Dieses Skript soll den Einstieg in diesen Workflow erleichtern.
-<<<<<<< HEAD
-Das von diesem Repository verwaltete Package 'jinja_latex' enthält einige Funktionen, die dabei helfen. Dokumentation für das Package finden sich in dem zum Repository gehörigen Wiki. Sollten bei der Verwendung Probleme auftauchen kann auf der 'Issues'-Seite eine Problembericht erstellt werden.
-
 # Inhalt
-=======
 Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Funktionen, die dabei helfen. Dokumentation für das Package finden sich in dem zum Repository gehörigen Wiki. Sollten bei der Verwendung Probleme auftauchen kann auf der 'Issues'-Seite eine Problembericht erstellt werden.
->>>>>>> 7bab5584592321ec903093eddd475b922d32068a
 
 # Inhalt
 
