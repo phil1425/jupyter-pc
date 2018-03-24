@@ -1,5 +1,6 @@
 # jupyter-pc
-Tutorial zum erstellen von PC-Versuchsprotokollen mit iPython Jupyter, jinja2 und LaTeX.
+
+Tutorial zum Erstellen von PC-Versuchsprotokollen mit iPython Jupyter, jinja2 und LaTeX.
 
 iPython Jupyter (https://jupyter.org) ist ein Browser-basiertes interaktives Python Notizbuch, in dem 
 Code, Grafiken und Text zusammen in einem Dokument verwendet werden können.
@@ -9,98 +10,138 @@ ein fertiges LaTeX-Dokument erstellen. Die im Notebook verwendeten Werte, Tabell
 die Vorlage eingebettet werden.
 
 Dieses Skript soll den Einstieg in diesen Workflow erleichtern.
+<<<<<<< HEAD
 Das von diesem Repository verwaltete Package 'jinja_latex' enthält einige Funktionen, die dabei helfen. Dokumentation für das Package finden sich in dem zum Repository gehörigen Wiki. Sollten bei der Verwendung Probleme auftauchen kann auf der 'Issues'-Seite eine Problembericht erstellt werden.
 
 # Inhalt
+=======
+Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Funktionen, die dabei helfen. Dokumentation für das Package finden sich in dem zum Repository gehörigen Wiki. Sollten bei der Verwendung Probleme auftauchen kann auf der 'Issues'-Seite eine Problembericht erstellt werden.
+>>>>>>> 7bab5584592321ec903093eddd475b922d32068a
 
-<!-- MarkdownTOC -->
+# Inhalt
 
 - Voraussetzungen
+
 - Testversion
+
 - Setup
-    - Texteditor
-    - LaTeX
-    - Python
+
+  - Texteditor
+
+  - LaTeX
+
+  - Python
+
 - Workflow
+
 - Einführung in Python
-    - Arbeiten mit dem Interpreter
-    - Datentypen und Variablen:
-    - Operatoren
-    - Listen
-    - Dictionaries
-    - Control Flow: if und for
-    - Die List comprehension
-    - Funktionen
-    - Datenausgabe
+
+  - Arbeiten mit dem Interpreter
+
+  - Datentypen und Variablen:
+
+  - Operatoren
+
+  - Listen
+
+  - Dictionaries
+
+  - Control Flow: if und for
+
+  - Die List comprehension
+
+  - Funktionen
+
+  - Datenausgabe
+
 - Beispiele
 
-<!-- /MarkdownTOC -->
-
 ## Voraussetzungen
-* Grundkenntnisse in einer Programmiersprache sind hilfreich
-* Grundkenntnisse in LaTeX (muss man wahrscheinlich sowieso lernen)
-* Geduld. Trotz vieler Bibliotheken und Dokumentation 
+
+- Grundkenntnisse in einer Programmiersprache sind hilfreich
+
+- Grundkenntnisse in LaTeX (muss man wahrscheinlich sowieso lernen)
+
+- Geduld. Trotz vieler Bibliotheken und Dokumentation 
 funktioniert oft nicht alles auf Anhieb.
 
-
 ## Testversion
+
 Jupyter Notebook lässt sich auf der Website des Projekts online ausprobieren. (jupyter.org) 
 
-
 ## Setup
+
 Es werden drei unterschiedliche Programme benötigt:
-* Einen Texteditor zum schreiben der LaTeX-Vorlage
-* Eine aktuelle LaTeX-Distribution
-* Eine aktuelle Python- Distribution
+
+- Einen Texteditor zum Schreiben der LaTeX-Vorlage
+
+- Eine aktuelle LaTeX-Distribution
+
+- Eine aktuelle Python-Distribution
 
 ### Texteditor
-Als Editor kann von Microsoft Editor (Windows) oder gedit (ubuntu) bis hin zu TeXMaker eigentlich jedes alles benutzt werden. Viele editoren haben aber Features, die beim schreiben von LaTeX-Dokumenten helfen. Hier einige beispiele:
 
-* Atom:
-Kostenloser open source Editor mit vielen Zusatzpaketen, allerdings ist die Auswahl an Paketen unübersichtlich groß.
+Als Editor kann von Microsoft Editor (Windows) oder gedit (ubuntu) bis hin zu TeXMaker eigentlich jedes alles benutzt werden. Viele Editoren haben aber Features, die beim Schreiben von LaTeX-Dokumenten helfen. Hier einige Beispiele:
+
+- Atom:
+Kostenloser open-source Editor mit vielen Zusatzpaketen, allerdings ist die Auswahl an Paketen unübersichtlich groß.
 Empfohlene Pakete: `latex-autocomplete` `latex` 
 
-* TeXMaker:
-Zeigt auf der einen Seite den Code und auf der anderen das fertige PDF, kommt schon fertig mit allem was man braucht, einfach zu bedienen.
+- TeXMaker:
+Zeigt auf der einen Seite den Code und auf der anderen das fertige PDF, kommt schon fertig mit allem was man braucht, einfach zu bedienen. Wurde in der LaTeX-Präsentation auch vorgestellt.
 
 ### LaTeX
-Wer sich einen komplett-Editor wie TeXMaker runtergeladen hat muss sich darum nicht mehr kümmern.
+
+Wer sich einen komplett-Editor wie TeXMaker runtergeladen, hat muss sich darum nicht mehr kümmern.
 Ansonsten
-* Windows: lade unter link den inStaller herunter und folge den Anweisungen
-* Mac: link
-* Ubuntu: `sudo apt install texlive-full`
+
+- Windows: lade unter link den inStaller herunter und folge den Anweisungen
+
+- Mac: link
+
+- Ubuntu: `sudo apt install texlive-full`
 
 ### Python
+
 Am einfachsten installiert sich Anaconda: Link herunterladen und dem Installer folgen.
 
 Falls schon python3 und pip installiert ist, lässt sich auch mit `pip3 install jupyter-notebook matplotlib numpy jinja2 scipy uncertainties` installieren.
 
-
 ## Workflow
+
 Das Protokoll wird in zwei Teilen geschrieben: Das LaTeX-Template und der Python-code.
-In das Template kommt all das rein, was man normalerweise in ein Protokoll schreiben würde, also Deckblatt, Theorieteil, Formeln etc. Aber anstatt Messwerten, Tabellen und Grafiken werden nur vermerke auf den Python-teil gemacht. Ein hilfsProgramm liest später den Code und das Template ein und schreibt an die markierten stellen die von Python generierten Werte und Tabellen. Das entstehende .tex-dokument lässt sich dann ganz normal in ein PDF konvertieren. Das klingt erst mal umständlich, aber der Großteil davon passiert automatisch.
-* Beispiel: Ihr habt ein template `vorlage.tex`. darin steht schon der Theorieteil. Jetzt soll das Messergebnis als Tabelle dargestellt werden: Ihr öffnet `notebook.ipnb` in jupyter und nennt dort das Ergebnis eurer berechnung `result`. In `vorlage.tex` schreibt ihr dann an die Stelle, an der ihr die tabelle haben wollt `\VAR{result}` und führt das jupyter notebook aus. Das generiert dann von alleine `output.tex`, in dem nun das ergebnis als zahl eingefügt wurde. Ändert man einen Teil der Berechnung oder die ursprünglichen Messwerte, dann ändert sich auch das Ergebnis in `output.pdf`. Vor allem für große tabellen und zwischenergebnisse ist das Hifreich
+In das Template kommt all das rein, was man normalerweise in ein Protokoll schreiben würde, also Deckblatt, Theorieteil, Formeln etc. Aber anstatt Messwerten, Tabellen und Grafiken werden nur Vermerke auf den Python-teil gemacht. Ein Hilfsprogramm liest später den Code und das Template ein und schreibt an die markierten stellen die von Python generierten Werte und Tabellen. Das entstehende .tex-dokument lässt sich dann ganz normal in eine PDF-Datei konvertieren. Das klingt erst mal umständlich, aber der Großteil davon passiert automatisch.
+
+- Beispiel Ihr habt ein template `vorlage.tex`. darin steht schon der Theorieteil. Jetzt soll das Messergebnis als Tabelle dargestellt werden: Ihr öffnet `notebook.ipnb` in jupyter und nennt dort das Ergebnis eurer Berechnung `result`. In `vorlage.tex` schreibt ihr dann an die Stelle, an der ihr die Tabelle haben wollt `\VAR{result}` und führt das jupyter Notebook aus. Das generiert dann von alleine `output.tex`, in dem nun das Ergebnis als Zahl eingefügt wurde. Ändert man einen Teil der Berechnung oder die ursprünglichen Messwerte, dann ändert sich auch das Ergebnis in `output.pdf`. Vor allem für große Tabellen und Zwischenergebnisse ist das hifreich.
 
 ## Einführung in Python
-Dieser Teil soll die Basics erklären, die notwendig sind um die Messwerte in jupyter Python auszuwerten.
+
+Dieser Teil soll die Basics erklären, die notwendig sind, um die Messwerte in jupyter Python auszuwerten.
 
 ### Arbeiten mit dem Interpreter
-Bei der Installation wurde ein Python-Interpreter mitgeliefert. Besonders Praktisch ist die iPython-Konsole. In die Konsole lässt sich Python-Code eingeben, der beim bestätigen direkt ausgeführt wird. Als ersten Test öffnen wir die Konsole und tippen ein:
+
+Bei der Installation wurde ein Python-Interpreter mitgeliefert. Besonders praktisch ist die iPython-Konsole. In die Konsole lässt sich Python-Code eingeben, der beim Bestätigen direkt ausgeführt wird. Als ersten Test öffnen wir die Konsole und tippen ein:
+
 ```
 print('Hello, World!')
 ```
-Mit der `print()` Funktion kann man sich an jeder stelle eines Programmes Werte als Text ausgeben lassen. 
+
+Mit der `print()` Funktion kann man sich an jeder Stelle eines Programmes Werte als Text ausgeben lassen. 
 Die Ausgabe sollte dann sein
+
 ```
 Hello, World!
 ```
-Das gleiche lässt sich natürlich auch direkt in ein jupyter-notebook schreiben. 
-Ich empfehle beim lesen dieses Kapitels einige der Beispiele in die Konsole zu schreiben und verschiedene Eingaben zu probieren, bis man den jeweiligen Befehl verstanden hat.
+
+Dasgleiche lässt sich natürlich auch direkt in ein jupyter-notebook schreiben. 
+Ich empfehle beim Lesen dieses Kapitels einige der Beispiele in die Konsole zu schreiben und verschiedene Eingaben zu probieren, bis man den jeweiligen Befehl verstanden hat.
 
 > mit der "Pfeil nach oben"- Taste lässt sich die letzte Eingabe wiederholen.  
 
-### Datentypen und Variablen: 
-Variablen sind Platzhalter für Werte: man legt einen Buchstaben oder einen namen fest, dem man dann einen Wert zuweisen kann. Der Wert kann dabei eine Zahl, aber auch ein string, liste oder Funktion sein
+### Datentypen und Variablen:
+
+Variablen sind Platzhalter für Werte: man legt einen Buchstaben oder einen Namen fest, dem man dann einen Wert zuweisen kann. Der Wert kann dabei eine Zahl, aber auch ein String (Zusammenschluss von Buchstaben und Zahlen), Liste(mehrere Items) oder Funktion sein.
+
 ```
 >>> x = 42
 >>> eine_zahl = 2
@@ -108,18 +149,26 @@ Variablen sind Platzhalter für Werte: man legt einen Buchstaben oder einen name
 >>> eine_liste = [1, 2]
 >>> ist_wahr = True
 ```
-bei der Benennung ist wichtig:
-* keine Leerzeichen oder komische Sonderzeichen
-* am besten so dass man sie später noch erkennt (`sigma_temp` ist besser als `st`)
-Datentypen legen fest, was der variable alles zugewiesen werden darf. 
 
-Die wichtigsten für uns sind int, float, bool und string. 
-* int: ganze zahl
-* float:Fließkommazahl
-* bool:Wahrheitswert
-* string:Sequenz aus alphanumerischen Zeichen
+Bei der Benennung ist wichtig:
 
-In Python werden Datentypen implizit gesetzt, das heißt das programm sucht sich den richtigen datentyp von alleine aus. wenn man Datentypen ineinander konvertieren möchte geht das meist so:
+- keine Leerzeichen oder komische Sonderzeichen
+
+- am besten so, dass man sie später noch erkennt (`sigma_temp` ist besser als `st`)
+Datentypen legen fest, was (Wertebereich, Buchstabe, Zahl etc) der Variable alles zugewiesen werden darf. 
+
+Die Wichtigsten für uns sind int, float, bool und string. 
+
+- int: ganze zahl
+
+- float:Fließkommazahl
+
+- bool:Wahrheitswert
+
+- string:Sequenz aus alphanumerischen Zeichen
+
+In Python werden Datentypen implizit gesetzt, das heißt, das Programm sucht sich den richtigen Datentyp von alleine aus. Wenn man Datentypen ineinander konvertieren möchte, geht das meist so:
+
 ```
 >>> int('10')
 10
@@ -136,10 +185,13 @@ In Python werden Datentypen implizit gesetzt, das heißt das programm sucht sich
 >>> int(True)
 1
 ```
-### Operatoren
-Der Zuweisungs-Operator `=` weist der Variable *davor* den wert *dahinter* zu
 
-Für Normale zahlen gibt es die klassischen Operatoren `+`,`-`,`*`,`/` und Python kennt auch Punkt vor strich Regeln.
+### Operatoren
+
+Der Zuweisungs-Operator `=` weist der Variable *davor* den Wert *dahinter* zu
+
+Für normale Zahlen gibt es die klassischen Operatoren `+`,`-`,`*`,`/` und Python kennt auch Punkt-vor-Strich-Regeln.
+
 ```
 >>> x = 5
 >>> x+4
@@ -157,15 +209,16 @@ Modulo `%` gibt den Rest einer ganzzahligen Division zurück (wie in der Grundsc
 Exponenten werde mit `x**y` dargestellt
 
 Zusammengesetzte Operatoren:
+
 ```
 >>> x += 5
 #ist Äquivalent zu
 >>> x = x+5
-
 ```
 
-Außerdem gibt es noch Vergleichoperatoren. Diese nehmen zwei werte und geben einen Wahrheitswert zurück.
+Außerdem gibt es noch Vergleichoperatoren. Diese nehmen zwei Werte und geben einen Wahrheitswert zurück.
 Für zahlen:
+
 ```
 >>> 5 == 5 #gleich
 True
@@ -185,10 +238,12 @@ True
 >>> 5 != 4 #nicht
 True
 ```
+
 Wichtig:
-Der Zuweisungs-Operator `=` ist nicht gleich dem Vergleichsoperator `==`
+Der Zuweisungs-Operator `=` ist nicht gleich dem Vergleichsoperator `==`!
 
 Für Wahrheitswerte:
+
 ```
 >>>True is True #gleich
 True
@@ -202,7 +257,9 @@ False
 >>>True or False #oder
 True
 ```
+
 Zuletzt gibt es noch einen relevanten Operator für Listen:
+
 ```
 >>> 1 in [0, 1, 2, 3]
 True
@@ -210,10 +267,13 @@ True
 >>> 2 in [3, 4, 5, 6]
 False
 ```
+
 Gibt True zurück, wenn das jeweilige Element Teil der Liste ist, ansonsten False.
 
 ### Listen
-Der wichtigste zusammengesetzte Datentyp für uns ist die liste. In einer Liste können mehrere Instanzen des gleichen Datentyps aneinander gehängt werden. Das ist hilfreich, wenn man zum Beispiel eine reihe an Messwerten genommen hat. Die liste steht in eckigen klammern und die einzelnen Elemente sind mit Kommata getrennt. Es lassen sich auch listen verschachteln.
+
+Der wichtigste zusammengesetzte Datentyp für uns ist die Liste. In einer Liste können mehrere Instanzen(=Exemplare) des gleichen Datentyps aneinander gehängt werden. Das ist hilfreich, wenn man zum Beispiel eine Reihe an Messwerten genommen hat. Die Liste steht in eckigen Klammern und die einzelnen Elemente sind durch Kommata getrennt. Es lassen sich auch Listen verschachteln.
+
 ```
 >>> messung_temp = [23.4, 23.5, 23.5, 23.7, 23.5]
 >>> messung_zeit = [  10,   20,   30,   40,   50]
@@ -223,21 +283,25 @@ Der wichtigste zusammengesetzte Datentyp für uns ist die liste. In einer Liste 
 
 Um an eine Liste etwas anzuhängen wird append() verwendet. Ein das n-te Element der liste ruft man mit liste[n] auf.
 listen lassen sich auch aneinanderhängen
+
 ```
 >>> list = [4, 5, 2, 3]
 >>> print('list')
 [4,5,2,3]
 ```
-Um auf ein einzelnes Element der Liste zuzugreifen hängt man den Index in Eckigen klammern an. Der Index Staret bei 0 und geht bis l-1. Möchte man vom letzten Element aus zählen kann man negative Indizes verwenden. -1 ist das letzte, -2 das vorletzte.. 
+
+Um auf ein einzelnes Element der Liste zuzugreifen, hängt man den Index in eckigen Klammern an. Der Index startet bei 0 und geht bis l-1. Möchte man vom letzten Element mit dem Zählen beginnen, kann man negative Indizes verwenden. -1 ist das letzte, -2 das vorletzte.. 
+
 ```
 >>> list[0]
 4
 
 >>> list[-1]
 3
-
 ```
+
 Hier noch ein paar nützliche Funktionen
+
 ```
 
 >>> list.append(x) 
@@ -258,13 +322,14 @@ Hier noch ein paar nützliche Funktionen
 
 >>> list.replace(x, y)
 #Ersetzt jedes Element x in der Liste mit y
-
 ```
 
->Strings sind auch Listen, das heißt `'hallo'[2]` gibt ein 'l' zurück
+> Strings sind auch Listen, das heißt, `'hallo'[2]` gibt ein 'l' zurück
 
 ### Dictionaries
-Dircionaries sind auch zusammengesetzte Datentypen, aber im gegensatz zu listen müssen sie nicht aus demselben datentyp zusammen gesetzt sein. Außerdem sind die Werte nicht nach Index, sonder nach ihrem namen, dem so genannten 'key' sortiert. Ein Dictionary ist nichts anderes als eine Ansammlung aus key:value - Paaren. Man definiert es mit geschweiften Klammern.
+
+Dircionaries sind auch zusammengesetzte Datentypen, aber im Gegensatz zu Listen müssen sie nicht aus demselben Datentyp zusammen gesetzt sein. Außerdem sind die Werte nicht nach Index, sonder nach ihrem Namen, dem so genannten 'key' sortiert. Ein Dictionary ist nichts anderes als eine Ansammlung aus key:value - Paaren. Man definiert es mit geschweiften Klammern.
+
 ```
 >>> data_1 = {
 ...    'konzentration': 0.01,
@@ -274,8 +339,9 @@ Dircionaries sind auch zusammengesetzte Datentypen, aber im gegensatz zu listen 
 >>> data_1['spannung']
 30
 ```
-Als keys kann man einige Datentypen verwenden, für unsere Zwecke machen meist nur Strings sinn. Die als werte können auch zusammengesetzte Datentypen wie eine Liste oder ein anderes Dictionary verwnedet werden.
-Dictionaries eignen sich besonders gut um eine gesamte Messung mit allen dafür verwendeten größen zu bearbeiten.
+
+Als keys kann man einige Datentypen verwenden, für unsere Zwecke ergeben meist nur Strings Sinn. Die als Werte können auch zusammengesetzte Datentypen wie eine Liste oder ein anderes Dictionary verwendet werden.
+Dictionaries eignen sich besonders gut, um eine gesamte Messung mit allen dafür verwendeten Größen zu bearbeiten.
 
 ```
 >>> data_2 = {
@@ -295,15 +361,20 @@ Dictionaries eignen sich besonders gut um eine gesamte Messung mit allen dafür 
 ```
 
 Es lassen sich auch Listen aus Dictionaries machen:
+
 ```
 >>> alles = [data_1, data_2]
 ```
 
 ### Control Flow: if und for
+
 Diese Funktionen steuern, wann und wie oft ein Teil des Programms ausgeführt wird.
-Wichtig: Hier ist das einrücken ein muss, ansonsten funktioniert das Programm nicht richtig
+Wichtig: Hier ist das Einrücken ein muss, ansonsten funktioniert das Programm nicht richtig.
+
 #### if
+
 Die allgemeine Struktur ist folgende:
+
 ```
 if (bedingung_1):
     #mach das eine
@@ -312,30 +383,44 @@ elif (bedingung_2):
 else:
     #ansonsten mach das hier
 ```
+
 Hierbei muss die Bedingung ein Ausdruck sein, der entweder wahr oder falsch zurückgibt.
 `elif` und `else` sind optional. 
 Es kann belibeig viele `elif` geben, aber nur ein if und ein else.
+
 ```
 if(x == 10):
     print('x ist zehn')
 else:
     print('x ist nicht zehn')
 ```
+
 #### for
-Wichtig für uns, `for` erlaubt es uns stück für stück durch eine Liste zu gehen.
+
+Wichtig für uns, `for` erlaubt es uns Stück für Stück durch eine Liste zu gehen.
+
 ```
 for x in liste:
     #mach irgendwas
 ```
+
 Die for schleife geht dann wie folgt vor:
-- setze x auf das erste element
-- führe den code aus
-- setze x auf das zweite element 
-- führe den code aus
-- bis zum ende der liste
+
+- setze x auf das erste Element
+
+- führe den Code aus
+
+- setze x auf das zweite Element 
+
+- führe den Code aus
+
+- ...
+
+- bis zum Ende der Liste
 
 Wenn man einfach nur hochzählen möchte, gibt es dafür die `range(n)` funktion.
 diese gibt eine Liste mit mit Werten von 0 bis n-1 zurück.
+
 ```
 >>>for i in range(5):
 ...    print(i)
@@ -347,7 +432,8 @@ diese gibt eine Liste mit mit Werten von 0 bis n-1 zurück.
 4
 ```
 
-`range()` kann man außerdem auch noch einen startwert und ein inkrement übergeben:
+`range()` kann man außerdem auch noch einen Startwert und ein Inkrement(i++, zählt in jeder Schleife hoch) übergeben:
+
 ```
 >>>for i in range(10, 30, 5):
 ...    print(i)
@@ -358,7 +444,7 @@ diese gibt eine Liste mit mit Werten von 0 bis n-1 zurück.
 25
 ```
 
-Mit der for-Schleife kann man beispielsweise eine Funktion auf eine reihe an daten anwenden:
+Mit der for-Schleife kann man beispielsweise eine Funktion auf eine Reihe von Daten anwenden:
 
 ```
 >>> messung_celsius = [10, 20, 30, 40]
@@ -366,29 +452,36 @@ Mit der for-Schleife kann man beispielsweise eine Funktion auf eine reihe an dat
 >>> for i in messung_celsuis:
 ... messung_kelvin.append(i+273.15)
 ```
+
 ### Die List comprehension
-Diese funktion kan man für quasi alles verwenden, sie kombiniert die Liste, for und if kompakt in einer Zeile.
+
+Diese Funktion kann man für quasi alles verwenden, sie kombiniert die Liste, for und if kompakt in einer Zeile.
 
 Möchte man die oben stehende for-schleife als List-comprehension schreiben, sähe das so aus:
+
 ```
 messung_kelvin = [x+273.15 for x in messung_celsius]
 ```
 
-Die allgemenie Struktur ist folgende:
+Die allgemeine Struktur ist folgende:
+
 ```
 [*Ausdruck* for *Variable* in list if *Bedingung*]
 ```
-Dieses statement führt den genannten Ausdruck über alle elemente der liste aus, aber nur wenn die Bedingug erfüllt ist. Die bedingung ist dabei optional
 
-Wenn man die Elemente mehrer Listen braucht, lässt sich `zip()`verwenden
+Dieses Statement führt den genannten Ausdruck über alle Elemente der liste aus, aber nur wenn die Bedingug erfüllt ist. Die Bedingung ist dabei optional
+
+Wenn man die Elemente mehrer Listen braucht, lässt sich `zip()`verwenden:
+
 ```
 >>>[x+y for x, y in zip([100, 200, 300], [1, 2, 3])]
 [101, 202, 303]
 ```
 
-Da ein größteil der Arbeit beim auswerten daraus besteht, funktionen auf reihen von messweten anzuwenden, ist dieser Befehl sehr nützlich
+Da ein Größteil der Arbeit beim Auswerten daraus besteht, Funktionen auf Reihen von Messwerten anzuwenden, ist dieser Befehl sehr nützlich.
 
 Hier einige Beispiele:
+
 ```
 >>>[x**2 for x in range(6)]
 [0, 1, 4, 9, 16, 25]
@@ -404,18 +497,21 @@ Hier einige Beispiele:
 ```
 
 ### Funktionen
-Funktionen sind stücke von code, die an einer anderen stelle aufgerufen werden können. Man kann ihnen variablen übergeben und sie können auch variablen zurück geben.
+
+Funktionen sind Stücke von Code, die an einer anderen stelle aufgerufen werden können. Man kann ihnen Variablen übergeben und sie können auch Variablen (über 'return') zurückgeben.
 
 Allgemein:
+
 ```
 def Funktion(variable_1, variable_2, ...):
     #mach irgendwas
     return variable_3, variable_4, ...
 ```
 
-Funktionen werden immer mit runden Klammern am ende aufgerufen, auch wenn man ihnen nichts übergeben will.
-Mit funktionen kann man einmal geschriebenen code wieder verwenden.
+Funktionen werden immer mit runden Klammern am Ende aufgerufen, auch wenn man ihnen nichts übergeben will.
+Mit Funktionen kann man einmal geschriebenen Code wieder verwenden.
 Man kann zum Beispiel eine Funktion schreiben, die einem die Summe einer Liste berechnet:
+
 ```
 def summe(liste):
     sum = 0
@@ -423,25 +519,29 @@ def summe(liste):
         summe += wert
     return sum
 ```
-Anstatt des alles oben nochmal zu schreiben ruft man die funktion später mit `summe()` auf.
+
+Anstatt des alles oben nochmal zu schreiben, ruft man die Funktion später mit `summe()` auf.
+
 ```
 >>> liste_volumen = [100, 200, 100, 50]
 >>> summe(liste_volumen)
 450
 ```
 
-> Man funktionen können andere Funktonen (auch sich selbst) aufrufen. Was gibt diese Funktion zurück?
-```
-def f(n):
-    if(n == 1):
-        return 1
-    else:
-        return n*f(n-1)
-```
+> Funktionen können andere Funktonen (auch sich selbst) aufrufen. Was gibt diese Funktion zurück?
+> 
+> ```
+> def f(n):
+>     if(n == 1):
+>         return 1
+>     else:
+>         return n*f(n-1)
+> ```
 
 ### Datenausgabe
-Innerhalb von LaTeX lässt sich mit bestimmten markierungen Python-Code und Variablen einbinden.
-Variablen werden mit `\VAR{}` eingabunden. Das Programm kopiert dann einfach den Wert für die jeweilige variable dort hin.
+
+Innerhalb von LaTeX lässt sich mit bestimmten Markierungen Python-Code und Variablen einbinden.
+Variablen werden mit `\VAR{}` eingabunden. Das Programm kopiert dann einfach den Wert für die jeweilige Variable dort hin.
 
 ```
 %% for i in range(10)
@@ -459,20 +559,23 @@ Variablen werden mit `\VAR{}` eingabunden. Das Programm kopiert dann einfach den
 7
 8
 9
-
 ```
-For schleifen sind mit zwei Prozent-Zeichen markiert. 
 
-Wichtig: Anders als im Python-Notebook muss hier das ende der Schleife markiert werden
+For-Schleifen sind mit zwei Prozent-Zeichen markiert. 
+
+Wichtig: Anders als im Python-Notebook muss hier das Ende der Schleife markiert werden
 
 #### Diagramme
+
 Zum Visualisieren von Daten verwenden wir die externe Bibliothek `matplotlib`:
 Dazu schreibt man einfach irgendwo an den Anfang des Notebooks
+
 ```
 import matplotlib.pyplot as plt
 ```
-Eine Grafik erstellt man damit so
-in diesem Beispiel wollen wir die listen `data_x` und `data_y` mit den Fehlerwerten `sigma_x` und `sigma_y` Gegeneinanger auftragen
+
+Eine Grafik erstellt man damit so:
+In diesem Beispiel wollen wir die listen `data_x` und `data_y` mit den Fehlerwerten `sigma_x` und `sigma_y` gegeneinander auftragen:
 
 ```
 plt.figure() #anfang
@@ -490,25 +593,32 @@ plt.errorbar(data_x, data_y, xerr=sigma_x, yerr=sigma_y, fmt='')
 plt.savefig('bilder/grafik_V_T.pdf')# Speichert Grafik ab
 plt.show() #ende
 ```
+
 Die Grafik kann dann in LaTeX ganz normal eingebunden werden.
+
 ```
 \includegraphics{bilder/grafik_V_T.pdf}
 ```
 
 #### Tabellen
-Um eine Tabelle in das LaTeX-Dokument einzubinden lässt sich am besten die von mir geschriebene Funktion verwenden:
+
+Um eine Tabelle in das LaTeX-Dokument einzubinden, lässt sich am besten die von mir geschriebene Funktion verwenden:
 
 ```
 \VAR{table(
-    'name': 'Gemessene Werte für c=0.1'
+  'Gemessene Werte für c=0.1',
+  {
     'Temperatur [K]': data_x,
     'Standardabweichung': sigma_x,
     'Spannung [V]':data_y,
     'Standardabweichug':sigma_y
+  }
 )}
 ```
-beim nächsten ausführen des Notebooks wird dann automatisch die tabelle generiert.
+
+beim nächsten Ausführen des Notebooks wird dann automatisch die Tabelle generiert.
 
 ## Beispiele
-Einige beispiele finden sich im gleichnamigen order. 
-Zum anschauen einfach das ganze Repository runterladen und und die .ipynb-Dateien mit jupyter notebook öffnen
+
+Einige Beispiele finden sich im gleichnamigen Ordner. 
+Zum Anschauen einfach das ganze Repository herunterladen und und die .ipynb-Dateien mit jupyter notebook öffnen.
