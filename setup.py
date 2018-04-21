@@ -8,5 +8,6 @@ setup(name='jupyterpc',
       author='Philipp Kollenz',
       author_email='philipp.kollenz@bombombox.net',
       license='MIT',
+      install_requires=['uncertainties', 'scipy', 'numpy'],
       packages=['jupyterpc'],
       zip_safe=False)

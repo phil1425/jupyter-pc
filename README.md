@@ -13,8 +13,6 @@ Dieses Skript soll den Einstieg in diesen Workflow erleichtern.
 # Inhalt
 Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Funktionen, die dabei helfen. Dokumentation für das Package finden sich in dem zum Repository gehörigen Wiki. Sollten bei der Verwendung Probleme auftauchen kann auf der 'Issues'-Seite eine Problembericht erstellt werden.
 
-# Inhalt
-
 - Voraussetzungen
 
 - Testversion
@@ -60,6 +58,8 @@ Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Fun
 - Geduld. Trotz vieler Bibliotheken und Dokumentation 
 funktioniert oft nicht alles auf Anhieb.
 
+![https://xkcd.com/1319/](https://imgs.xkcd.com/comics/automation.png)
+
 ## Testversion
 
 Jupyter Notebook lässt sich auf der Website des Projekts online ausprobieren. (jupyter.org) 
@@ -85,36 +85,39 @@ Empfohlene Pakete: `latex-autocomplete` `latex`
 - TeXMaker:
 Zeigt auf der einen Seite den Code und auf der anderen das fertige PDF, kommt schon fertig mit allem was man braucht, einfach zu bedienen. Wurde in der LaTeX-Präsentation auch vorgestellt.
 
+- Overleaf: Die Tex-Dateien sind online gespeichert. Zum Fertig stellen müssen sie dann allerdings herunter geladen und durch das Templating-Programm laufen gelassen werden (nicht getestet).
+
+
 ### LaTeX
 
-Wer sich einen komplett-Editor wie TeXMaker runtergeladen, hat muss sich darum nicht mehr kümmern.
+Wer Overleaf verwendet muss sich darum nicht mehr kümmern.
 Ansonsten
 
 - Windows: lade unter http://tug.org/texlive/ den installer herunter und folge den Anweisungen
 
-- Mac: wie windows
+- Mac: wie Windows
 
 - Ubuntu: `sudo apt install texlive-full`
 
 ### Python
 
-Am einfachsten installiert sich Anaconda: auf https://anaconda.org die Python3-version herunterladen und dem Installer folgen.
+Am einfachsten installiert sich Anaconda: auf https://anaconda.org die Python3-distribution herunterladen und dem Installer folgen. Dann ein Konsolen-Fenster öffnen (Terminal bei Mac und cmd bei Windows) und `pip install uncertainties` eingeben, da dieses package in der standard-installation von anaconda nicht enthalten ist.  
 
-Falls schon python3 und pip installiert ist, lässt sich auch mit `pip3 install jupyter-notebook matplotlib numpy jinja2 scipy uncertainties` installieren.
+Wer anstatt des gesamten Conda-Paketes (z.b. wegen Speicherplatz) nur das wichtigste installieren möchte, kann auch auf https://python.org python3 und pip installieren. Dann lässt sich mit dem konsolen-command `pip install jupyter-notebook matplotlib numpy jinja2 scipy uncertainties` alles installieren.
 
 #### Das Jupyterpc-package
 
-Das Jupyterpc-package ist eine von mir geschriebene Sammlung an Funktionen, die beim erstellen der Protokolle helfen. 
-Darunter sind. Zur installation den gesamten ordner herunterladen und entweder mit pip oder anaconda installieren:
-- pip: navigiere in dieses Verzeichnis, dann ```pip install .```
-- anaconda: 
+Das Jupyterpc-package ist eine von mir geschriebene Sammlung an Funktionen, die beim erstellen der Protokolle helfen. Zur installation einfach eine Konsole öffnen und `pip install jupyterpc` eingeben.  
+
+Notfalls kann auch der in der Datei `jupyterpc/jupyterpc.py` enthaltene Code direkt an den Anfang jedes Notebooks gepastet werden.
 
 ## Workflow
 
 Das Protokoll wird in zwei Teilen geschrieben: Das LaTeX-Template und der Python-code.
-In das Template kommt all das rein, was man normalerweise in ein Protokoll schreiben würde, also Deckblatt, Theorieteil, Formeln etc. Aber anstatt Messwerten, Tabellen und Grafiken werden nur Vermerke auf den Python-teil gemacht. Ein Hilfsprogramm liest später den Code und das Template ein und schreibt an die markierten stellen die von Python generierten Werte und Tabellen. Das entstehende .tex-dokument lässt sich dann ganz normal in eine PDF-Datei konvertieren. Das klingt erst mal umständlich, aber der Großteil davon passiert automatisch.
-
-- Beispiel Ihr habt ein template `vorlage.tex`. darin steht schon der Theorieteil. Jetzt soll das Messergebnis als Tabelle dargestellt werden: Ihr öffnet `notebook.ipnb` in jupyter und nennt dort das Ergebnis eurer Berechnung `result`. In `vorlage.tex` schreibt ihr dann an die Stelle, an der ihr die Tabelle haben wollt `\VAR{result}` und führt das jupyter Notebook aus. Das generiert dann von alleine `output.tex`, in dem nun das Ergebnis als Zahl eingefügt wurde. Ändert man einen Teil der Berechnung oder die ursprünglichen Messwerte, dann ändert sich auch das Ergebnis in `output.pdf`. Vor allem für große Tabellen und Zwischenergebnisse ist das hifreich.
+In das Template kommt all das rein, was man normalerweise in ein Protokoll schreiben würde, also Deckblatt, Theorieteil, Formeln etc. Aber anstatt Messwerten, Tabellen und Grafiken werden nur Vermerke auf den Python-teil gemacht. Ein Hilfsprogramm liest später den Code und das Template ein und schreibt an die markierten stellen die von Python generierten Werte und Tabellen. Das entstehende .tex-dokument lässt sich dann ganz normal in eine PDF-Datei konvertieren. Das klingt erst mal umständlich, aber der Großteil davon passiert automatisch.  
+Beispiel:
+Vorlage.tex | Python.py | Output.tex
+\VAR{result} | result=5 | 5
 
 ## Einführung in Python
 
@@ -134,6 +137,7 @@ Die Ausgabe sollte dann sein
 ```
 Hello, World!
 ```
+In der Python-Konsole wird aber sowieso jeder output ausgegeben, es macht also hier keinen unterschied.
 
 Dasgleiche lässt sich natürlich auch direkt in ein jupyter-notebook schreiben. 
 Ich empfehle beim Lesen dieses Kapitels einige der Beispiele in die Konsole zu schreiben und verschiedene Eingaben zu probieren, bis man den jeweiligen Befehl verstanden hat.
@@ -154,20 +158,20 @@ Variablen sind Platzhalter für Werte: man legt einen Buchstaben oder einen Name
 
 Bei der Benennung ist wichtig:
 
-- keine Leerzeichen oder komische Sonderzeichen
-
+- keine Leerzeichen
+- keine Sonderzeichen am Anfang des wortes
 - am besten so, dass man sie später noch erkennt (`sigma_temp` ist besser als `st`)
 Datentypen legen fest, was (Wertebereich, Buchstabe, Zahl etc) der Variable alles zugewiesen werden darf. 
 
 Die Wichtigsten für uns sind int, float, bool und string. 
 
-- int: ganze zahl
+- int: ganze Zahl
 
-- float:Fließkommazahl
+- float: Fließkommazahl
 
-- bool:Wahrheitswert
+- bool: Wahrheitswert
 
-- string:Sequenz aus alphanumerischen Zeichen
+- string: Sequenz aus Zeichen
 
 In Python werden Datentypen implizit gesetzt, das heißt, das Programm sucht sich den richtigen Datentyp von alleine aus. Wenn man Datentypen ineinander konvertieren möchte, geht das meist so:
 
@@ -244,7 +248,7 @@ True
 Wichtig:
 Der Zuweisungs-Operator `=` ist nicht gleich dem Vergleichsoperator `==`!
 
-Für Wahrheitswerte:
+Operatoren für Wahrheitswerte:
 
 ```
 >>>True is True #gleich
