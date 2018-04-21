@@ -6,10 +6,22 @@ iPython Jupyter (https://jupyter.org) ist ein Browser-basiertes interaktives Pyt
 Code, Grafiken und Text zusammen in einem Dokument verwendet werden können.
 In Verbindung mit dem Templating-Engine jinja2 (http://jinja.pocoo.org/docs/2.10/) lässt sich aus einer
 bestehenden Vorlage (für Format, Formeln und Text) und einem Notebook (für die Auswertung der Messwerte)
-ein fertiges LaTeX-Dokument erstellen. Die im Notebook verwendeten Werte, Tabellen und Grafiken können direkt in
-die Vorlage eingebettet werden.
+ein fertiges LaTeX-Dokument erstellen. Dieses Skript soll den Einstieg in diesen Workflow erleichtern.
 
-Dieses Skript soll den Einstieg in diesen Workflow erleichtern.
+**Vortleile**
+- Die im Notebook verwendeten Werte, Tabellen und Grafiken können direkt in
+die Vorlage eingebettet werden, ohne dass erst csv-dateien abgespeichert oder werte mit ctrl-c/-v kopiert werden müssen.
+- Die Fehlerrechnung wird automatisch durchgeführt 
+- Wenn man einmal code für eine Aufgabe geschrieben hat, kann man ihn das nächste mal wieder verwenden ohne dass man noch einmal darüber nachdenken muss. Zum Beispiel beim erstellen von ausgleichsgeraden.
+- Man lernt ein bisschen programmieren
+
+**Nachteile**
+- Dauert wahrscheinlich länger zum einarbeiten/installieren als Origin.
+- Fehlermeldungen sind manchmal frustrierend
+- man muss ein bisschen programmieren lernen
+
+![https://xkcd.com/974/](https://imgs.xkcd.com/comics/the_general_problem.png)  
+https://xkcd.com/974/
 # Inhalt
 Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Funktionen, die dabei helfen. Dokumentation für das Package finden sich in dem zum Repository gehörigen Wiki. Sollten bei der Verwendung Probleme auftauchen kann auf der 'Issues'-Seite eine Problembericht erstellt werden.
 
@@ -58,8 +70,8 @@ Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Fun
 - Geduld. Trotz vieler Bibliotheken und Dokumentation 
 funktioniert oft nicht alles auf Anhieb.
 
-![https://xkcd.com/1319/](https://imgs.xkcd.com/comics/automation.png)
-https://xkcd.com/1319/
+![https://xkcd.com/1739/](https://imgs.xkcd.com/comics/fixing_problems.png)  
+https://xkcd.com/1739/
 ## Testversion
 
 Jupyter Notebook lässt sich auf der Website des Projekts online ausprobieren. (jupyter.org) 
