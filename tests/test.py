@@ -23,7 +23,8 @@ class TestUlist(TestCase):
 		list_sigma = [0.04, 2000, 23, 1e23]
 		self.assertEqual(ulist(list_val, list_sigma), [ufloat(v, s) for v, s in zip(list_val, list_sigma)])
 		self.assertEqual(ulist(list_val, 10), [ufloat(v, 10) for v in list_val])
-
+        self.assertEqual(num(ulist(list_val, list_sigma)), list_val)
+        self.assertEqual(sig(ulist(list_val, list_sigma)), list_sigma)
 
 if __name__== '__main__':
 	unittest.main()
