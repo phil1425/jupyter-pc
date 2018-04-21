@@ -90,17 +90,24 @@ Zeigt auf der einen Seite den Code und auf der anderen das fertige PDF, kommt sc
 Wer sich einen komplett-Editor wie TeXMaker runtergeladen, hat muss sich darum nicht mehr kümmern.
 Ansonsten
 
-- Windows: lade unter link den inStaller herunter und folge den Anweisungen
+- Windows: lade unter http://tug.org/texlive/ den installer herunter und folge den Anweisungen
 
-- Mac: link
+- Mac: wie windows
 
 - Ubuntu: `sudo apt install texlive-full`
 
 ### Python
 
-Am einfachsten installiert sich Anaconda: Link herunterladen und dem Installer folgen.
+Am einfachsten installiert sich Anaconda: auf https://anaconda.org die Python3-version herunterladen und dem Installer folgen.
 
 Falls schon python3 und pip installiert ist, lässt sich auch mit `pip3 install jupyter-notebook matplotlib numpy jinja2 scipy uncertainties` installieren.
+
+#### Das Jupyterpc-package
+
+Das Jupyterpc-package ist eine von mir geschriebene Sammlung an Funktionen, die beim erstellen der Protokolle helfen. 
+Darunter sind. Zur installation den gesamten ordner herunterladen und entweder mit pip oder anaconda installieren:
+- pip: navigiere in dieses Verzeichnis, dann ```pip install .```
+- anaconda: 
 
 ## Workflow
 
@@ -595,10 +602,34 @@ Die Grafik kann dann in LaTeX ganz normal eingebunden werden.
 \includegraphics{bilder/grafik_V_T.pdf}
 ```
 
-#### Tabellen
+### Uncertainties
+```Uncertainties``` ist ein package zum Rechnen mit Fehlerfortpflanzung. Es enthält vor allem den datentyp ```ufloat```.
+Dieser Enthält neben dem normalen Zahlenwert auch die Standardabweichung. Führt man eine Berechnung mit diesem Typ aus, so wird die Standardabweichung über Gauss'sche Fehlerfortpflanzung automatisch mitberechnet. 
+```
+>>> from uncertainties import ufloat
+>>> x = ufloat(10, 1) # 10 +/- 1
+>>> y = ufloat(12, 2) # 12 +/- 2
+>>> x+y
+22.0+/-2.23606797749979
+```
+Dabei kann die durchgeführte Berechnung beliebig viele fehlerbehaftete Größen haben.
 
-Um eine Tabelle in das LaTeX-Dokument einzubinden, lässt sich am besten die von mir geschriebene Funktion verwenden:
+### Jupyterpc-Funktionen
+```jupyterpc``` Enthält die Funktionen ```fit(), table(), sci(), ufloat(), num(), sig()``` genaue Dokumentation über die Benutzung der Funktionen gibt es auf der wiki-Seite dieses repos oben rechts. Am besten schaut man sich dazu die Beispiele an.
+Eingebunden wird das package am besten mit ```from jupyterpc import *``` am Anfang des Skripts.
+- ```fit```: nimmt als input zwei listen (fehlerbehaftet oder nicht) und gibt die Koeffizienten m und b der gefitteten 
+Ausgleichsgerade aus.
+```
+>>> data_x = [1,2,3,4]
+>>> data_y = [5,6,7,8]
+>>> m, b = fit(data_x, data_y)
+>>> m
+1.0+/-1.4197849550280142e-16
+>>> b
+4.0+/-3.888241265752618e-16
+```
 
+- ```table```: nimmt einen Titel und eine beliebige Anzahl an Listen und gibt eine von LaTeX-Lesbare Tabelle aus.
 ```
 \VAR{table(
   'Gemessene Werte für c=0.1',
@@ -609,6 +640,27 @@ Um eine Tabelle in das LaTeX-Dokument einzubinden, lässt sich am besten die von
     'Standardabweichug':sigma_y
   }
 )}
+```
+- ```sci```: gibt einen Zahlenwert (auch fehlerbehaftet) in wissenschaflticher Schreibweise LaTeX-Lesbar aus.
+```
+>>> sci(122321)
+1.2232 \times 10^{5}
+```
+- ```ulist``` produziert eine Liste von fehlerbehafteten Werten. Wichtig, wenn man damit weiter rechnen möchte.
+```
+data_v = ulist([1,2,3,4], 1) # Alle Werte haben den Fehler 1
+data_t = ulist([5,2,3,4], [1, 0.2, 0.5, 0.1]) # Die Datenpunkte haben unterschiedliche Fehler
+data_s = [v*t for v,t in zip(data_v, data_t)] # data_s hat jetzt auch einen Fehlerwert. 
+```
+- ```num``` gibt die **Werte** einer mit ```ulist``` generierten Liste aus.
+```
+>>> num(data_t)
+[5,2,3,5]
+```
+- ```sig```gibt die **Fehler** einer mit ```ulist``` generierten Liste aus.
+```
+>>> sig(data_t)
+[1, 0.2, 0.5, 0.1]
 ```
 
 beim nächsten Ausführen des Notebooks wird dann automatisch die Tabelle generiert.
