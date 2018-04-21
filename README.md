@@ -116,9 +116,10 @@ Notfalls kann auch der in der Datei `jupyterpc/jupyterpc.py` enthaltene Code dir
 Das Protokoll wird in zwei Teilen geschrieben: Das LaTeX-Template und der Python-code.
 In das Template kommt all das rein, was man normalerweise in ein Protokoll schreiben würde, also Deckblatt, Theorieteil, Formeln etc. Aber anstatt Messwerten, Tabellen und Grafiken werden nur Vermerke auf den Python-teil gemacht. Ein Hilfsprogramm liest später den Code und das Template ein und schreibt an die markierten stellen die von Python generierten Werte und Tabellen. Das entstehende .tex-dokument lässt sich dann ganz normal in eine PDF-Datei konvertieren. Das klingt erst mal umständlich, aber der Großteil davon passiert automatisch.  
 Beispiel:  
-| Vorlage.tex | Python.py | Output.tex|
-| --- | --- | --- |
-|\VAR{result} | result=5 | 5 |
+
+Vorlage.tex | Python.py | Output.tex
+--- | --- | ---
+`\VAR{result}` | `result=5` | `5`
 
 ## Einführung in Python
 
