@@ -2,8 +2,13 @@ from uncertainties import ufloat
 from scipy import odr
 import uncertainties as uc
 
+ucvar = [uc.core.AffineScalarFunc, uc.core.Variable]
+x = 5
+def a():
+    return x
+
 def sci(num, decimals=4):
-    if type(num) == uc.core.Variable:
+    if type(num) in ucvar:
         return num.format('L')
     elif type(num) in [float, int]:
         float_str = str("{0:."+str(decimals)+"e}").format(num)
@@ -31,17 +36,27 @@ def ulist(list_val, sigma):
     else:
         raise BaseException('sigma must be of type float, int or a list but is %s' % (type(sigma)))
 
+def num(ulist):
+    if type(ulist[0]) not in ucvar:
+        raise BaseException('list has to be of type ulist')
+    return [x.n for x in ulist]
+
+def sig(ulist):
+    if type(ulist[0]) not in ucvar:
+        raise BaseException('list has to be of type ulist')
+    return [x.s for x in ulist]
+
 def fit(data_x, data_y, sigma_x=None, sigma_y=None, func=None, beta=[1., 0.], *args, **kwargs):
     if func == None:
         func = lambda p,x: p[0]*x+p[1]
 
-    if type(data_x[0]) in [uc.core.Variable]:
+    if type(data_x[0]) in ucvar:
         values_x = [d.n for d in data_x]
         sigma_x = [d.s for d in data_x]
     elif type(data_x[0]) in [float, int]:
         values_x = data_x
 
-    if type(data_y[0]) in [uc.core.Variable]:
+    if type(data_y[0]) in ucvar:
         values_y = [d.n for d in data_y]
         sigma_y = [d.s for d in data_y]
     elif type(data_y[0]) in [float, int]:
@@ -68,7 +83,8 @@ def table(name, data):
             \\end{table}
           '''
     data_str = []
-    for i in range(max_len-1):
-        data_str += '\t\t\t'+''.join(['$'+sci(x[i])+'$ & ' for x in data.values()])[:-2]+'\\\\\n'
+    for i in range(max_len):
+        data_str += '\t\t\t'+''.join(['$'+sci(x[i], decimals)+'$ & ' for x in data.values()])[:-2]+'\\\\\n'
     data_str = ''.join(data_str)
     return start+name_str+data_str+end
+
