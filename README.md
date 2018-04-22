@@ -1,4 +1,5 @@
-# jupyter-pc
+# jupyter-pc  
+[![PyPI version](https://badge.fury.io/py/jupyterpc.svg)](https://badge.fury.io/py/jupyterpc)  
 
 Tutorial zum Erstellen von PC-Versuchsprotokollen mit iPython Jupyter, jinja2 und LaTeX.
 
