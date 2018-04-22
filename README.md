@@ -60,6 +60,10 @@ Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Fun
 
   - Datenausgabe
 
+  - Jupyterpc
+
+  - Weitere hilfreiche Packages
+
 - Beispiele
 
 ## Voraussetzungen
@@ -688,6 +692,10 @@ data_s = [v*t for v,t in zip(data_v, data_t)] # data_s hat jetzt auch einen Fehl
 ```
 
 beim nächsten Ausführen des Notebooks wird dann automatisch die Tabelle generiert.
+
+### Weitere Packages
+- `peakutils.indexes` (Bestimmung von peaks) http://peakutils.readthedocs.io/en/latest/tutorial_a.html
+- `scipy.constants` (Naturkonstanten) https://docs.scipy.org/doc/scipy/reference/constants.html
 
 ## Beispiele
 
