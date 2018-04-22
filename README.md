@@ -124,10 +124,10 @@ Das Jupyterpc-package ist eine von mir geschriebene Sammlung an Funktionen, die 
 
 Notfalls kann auch der in der Datei `jupyterpc/jupyterpc.py` enthaltene Code direkt an den Anfang jedes Notebooks gepastet werden.
 
-*Dependencies*
+**Dependencies**
 - `uncertainties` https://pythonhosted.org/uncertainties/
-- `scipy.odr` https://docs.scipy.org/doc/scipy/reference/odr.html
-Sollten nach der installation aber schon vorhanden sein
+- `scipy.odr` https://docs.scipy.org/doc/scipy/reference/odr.html  
+Sollten nach der oben durchgeführten Installation aber sowieso schon vorhanden sein.
 
 ## Workflow
 
