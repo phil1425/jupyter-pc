@@ -118,6 +118,8 @@ Ansonsten
 
 ### Python
 
+**Wichtig: Beim installieren wird man gefragt, ob man der `$PATH` - Variable etwas hinzufügen möchte. Den haken dafür unbedinkt ankreuzen**
+
 Am einfachsten installiert sich Anaconda: auf https://anaconda.org die Python3-distribution herunterladen und dem Installer folgen. Dann ein Konsolen-Fenster öffnen (Terminal bei Mac und cmd bei Windows) und `pip install uncertainties` eingeben, da dieses package in der standard-installation von anaconda nicht enthalten ist.  
 
 Wer anstatt des gesamten Conda-Paketes (z.b. wegen Speicherplatz) nur das wichtigste installieren möchte, kann auch auf https://python.org python3 und pip installieren. Dann lässt sich mit dem konsolen-command `pip install jupyter-notebook matplotlib numpy jinja2 scipy uncertainties` alles installieren.
