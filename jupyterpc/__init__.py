@@ -1,1 +1,1 @@
-from .jupyterpc import sci, fit, num, sig, table, render
+from .jupyterpc import sci, fit, num, sig, table, render, uplot
