@@ -1,1 +1,1 @@
-from .jupyterpc import sci, fit, ufloat, num, sig, table
+from .jupyterpc import sci, fit, ufloat, num, sig, table, render

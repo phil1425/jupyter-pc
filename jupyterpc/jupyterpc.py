@@ -1,11 +1,11 @@
 from uncertainties import ufloat
 from scipy import odr
 import uncertainties as uc
+from jinja2 import Template
+import jinja2
+import os
 
 ucvar = [uc.core.AffineScalarFunc, uc.core.Variable]
-x = 5
-def a():
-    return x
 
 def sci(num, decimals=4):
     if type(num) in ucvar:
@@ -84,7 +84,26 @@ def table(name, data):
           '''
     data_str = []
     for i in range(max_len):
-        data_str += '\t\t\t'+''.join(['$'+sci(x[i], decimals)+'$ & ' for x in data.values()])[:-2]+'\\\\\n'
+        data_str += '\t\t\t'+''.join(['$'+sci(x[i])+'$ & ' for x in data.values()])[:-2]+'\\\\\n'
     data_str = ''.join(data_str)
     return start+name_str+data_str+end
+
+def render(template_path, output_path, variables):
+    latex_jinja_env = jinja2.Environment(
+        block_start_string = '\BLOCK{',
+        block_end_string = '}',
+        variable_start_string = '\VAR{',
+        variable_end_string = '}',
+        comment_start_string = '\#{',
+        comment_end_string = '}',
+        line_statement_prefix = '%%',
+        line_comment_prefix = '%#',
+        trim_blocks = True,
+        autoescape = False,
+        loader = jinja2.FileSystemLoader(os.path.abspath('.'))
+    )
+
+    template = latex_jinja_env.get_template(template_path)
+    with open(output_path, 'w') as out:
+        out.write(template.render(variables))    
 
