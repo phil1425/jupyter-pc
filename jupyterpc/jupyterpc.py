@@ -84,7 +84,7 @@ def table(name, data):
           '''
     data_str = []
     for i in range(max_len):
-        data_str += '\t\t\t'+''.join(['$'+sci(x[i], decimals)+'$ & ' for x in data.values()])[:-2]+'\\\\\n'
+        data_str += '\t\t\t'+''.join(['$'+sci(x[i])+'$ & ' for x in data.values()])[:-2]+'\\\\\n'
     data_str = ''.join(data_str)
     return start+name_str+data_str+end
 
