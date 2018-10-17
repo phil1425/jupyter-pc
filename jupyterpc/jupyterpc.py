@@ -1,11 +1,12 @@
 from uncertainties import ufloat
 from scipy import odr
+import numpy as np
 import uncertainties as uc
+from jinja2 import Template
+import jinja2
+import os
 
 ucvar = [uc.core.AffineScalarFunc, uc.core.Variable]
-x = 5
-def a():
-    return x
 
 def sci(num, decimals=4):
     if type(num) in ucvar:
@@ -22,29 +23,24 @@ def sci(num, decimals=4):
     else:
         return str(num)
 
-def ulist(list_val, sigma):
-    if type(list_val[0]) not in [int, float]:
-        raise TypeError('elements of list must be of type float or int, but are %s' % (type(list_val[0])))
-
-    if type(sigma) in [int, float]:
-        return [ufloat(x, sigma) for x in list_val]
-    elif type(sigma) == list:
-        if len(list_val) == len(sigma):
-            return [ufloat(v, s) for v, s in zip(list_val, sigma)]
-        else:
-            raise BaseException('list and sigma must be the same length, but are %s and %s' % (len(list_val),len(sigma)))
-    else:
-        raise BaseException('sigma must be of type float, int or a list but is %s' % (type(sigma)))
-
 def num(ulist):
-    if type(ulist[0]) not in ucvar:
-        raise BaseException('list has to be of type ulist')
-    return [x.n for x in ulist]
-
+    if type(ulist[0]) in ucvar:
+        if type(ulist) == np.ndarray:
+            return np.array([x.n for x in ulist])
+        else:
+            return [x.n for x in ulist]
+    else:
+        raise BaseException('input must be a list of ufloats or an uarray')
+ 
 def sig(ulist):
-    if type(ulist[0]) not in ucvar:
-        raise BaseException('list has to be of type ulist')
-    return [x.s for x in ulist]
+    if type(ulist[0]) in ucvar:
+        if type(ulist) == np.ndarray:
+            return np.array([x.s for x in ulist])
+        else:
+            return [x.s for x in ulist]
+    else:
+        raise BaseException('input must be a list of ufloats or an uarray')
+
 
 def fit(data_x, data_y, sigma_x=None, sigma_y=None, func=None, beta=[1., 0.], *args, **kwargs):
     if func == None:
@@ -87,4 +83,23 @@ def table(name, data):
         data_str += '\t\t\t'+''.join(['$'+sci(x[i])+'$ & ' for x in data.values()])[:-2]+'\\\\\n'
     data_str = ''.join(data_str)
     return start+name_str+data_str+end
+
+def render(template_path, output_path, variables):
+    latex_jinja_env = jinja2.Environment(
+        block_start_string = '\BLOCK{',
+        block_end_string = '}',
+        variable_start_string = '\VAR{',
+        variable_end_string = '}',
+        comment_start_string = '\#{',
+        comment_end_string = '}',
+        line_statement_prefix = '%%',
+        line_comment_prefix = '%#',
+        trim_blocks = True,
+        autoescape = False,
+        loader = jinja2.FileSystemLoader(os.path.abspath('.'))
+    )
+
+    template = latex_jinja_env.get_template(template_path)
+    with open(output_path, 'w') as out:
+        out.write(template.render(variables))    
 
