@@ -23,6 +23,7 @@ die Vorlage eingebettet werden, ohne dass erst csv-dateien abgespeichert oder we
 
 ![https://xkcd.com/974/](https://imgs.xkcd.com/comics/the_general_problem.png)  
 https://xkcd.com/974/
+
 # Inhalt
 Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Funktionen, die dabei helfen. Dokumentation für das Package finden sich in dem zum Repository gehörigen Wiki. Sollten bei der Verwendung Probleme auftauchen kann auf der 'Issues'-Seite eine Problembericht erstellt werden.
 
@@ -65,6 +66,8 @@ Das von diesem Repository verwaltete Package ```jupyterpc``` enthält einige Fun
   - Weitere hilfreiche Packages
 
 - Beispiele
+
+- Weitere Tutorials
 
 ## Voraussetzungen
 
@@ -703,3 +706,8 @@ beim nächsten Ausführen des Notebooks wird dann automatisch die Tabelle generi
 
 Einige Beispiele finden sich im gleichnamigen Ordner. 
 Zum Anschauen einfach das ganze Repository herunterladen und und die .ipynb-Dateien mit jupyter notebook öffnen.
+
+## Weiter Tutorials
+Die hier genannten Funktionen decken eigentlich alles ab, was man zum schreiben von Protokollen mit Jupyter benötigt. Ein etwas umfangreicheres Tutorial für die Grundlagen von Python bietet die Python-Dokumentation (habe ich selbst verwendet):  
+- Englisch: https://docs.python.org/3/tutorial/index.html
+- Deutsch: https://py-tutorial-de.readthedocs.io/de/python-3.3/

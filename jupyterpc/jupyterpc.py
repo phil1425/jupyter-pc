@@ -1,4 +1,5 @@
 from uncertainties import ufloat
+import matplotlib.pyplot as plt
 from scipy import odr
 import numpy as np
 import uncertainties as uc
@@ -83,6 +84,22 @@ def table(name, data):
         data_str += '\t\t\t'+''.join(['$'+sci(x[i])+'$ & ' for x in data.values()])[:-2]+'\\\\\n'
     data_str = ''.join(data_str)
     return start+name_str+data_str+end
+
+def uplot(data_x, data_y, *args, fmt=' ', **kwargs):
+    sigma_x = None
+    sigma_y = None
+    if type(data_x[0]) in ucvar:
+        values_x = [d.n for d in data_x]
+        sigma_x = [d.s if d.s!=0 else 1e-5 for d in data_y]
+    elif type(data_x[0]) in [float, int]:
+        values_x = data_x
+
+    if type(data_y[0]) in ucvar:
+        values_y = [d.n for d in data_y]
+        sigma_y = [d.s if d.s!=0 else 1e-5 for d in data_y]
+    elif type(data_y[0]) in [float, int]:
+        values_y = data_y
+    plt.errorbar(values_x, values_y, xerr=sigma_x, yerr=sigma_y, *args, fmt=fmt, **kwargs)
 
 def render(template_path, output_path, variables):
     latex_jinja_env = jinja2.Environment(
