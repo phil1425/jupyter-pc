@@ -48,7 +48,7 @@ def fit(data_x, data_y, sigma_x=None, sigma_y=None, func=None, beta=[1., 0.], *a
 
     if type(data_x[0]) in ucvar:
         values_x = [d.n for d in data_x]
-        sigma_x = [d.s if d.s!=0 else 1e-5 for d in data_y]
+        sigma_x = [d.s if d.s!=0 else 1e-5 for d in data_x]
     elif type(data_x[0]) in [float, int]:
         values_x = data_x
 
