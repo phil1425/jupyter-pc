@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 setup(name='jupyterpc',
-      version='0.1.6',
+      version='0.1.7',
       description='Some Functions for making Tables and Graphics in Jupyter',
       url='https://github.com/phil1425/jupyter-pc',
       author='Philipp Kollenz',
