@@ -1,0 +1,25 @@
+\documentclass{article}
+    \usepackage[margin=0.7in]{geometry}
+    \usepackage[parfill]{parskip}
+    \usepackage[utf8]{inputenc}
+    \usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+\begin{document}
+\section*{Bestimmung des Molaren Extinktionskoeffizienten}
+
+\VAR{table('Werte zur Berechnung von \\epsilon',
+  {
+  'Intensität':data_I,
+  'Extinktion':data_E,
+  'Konzentration':data_c
+  }
+)}
+
+\begin{figure}
+  \includegraphics{'grafik_1.pdf'}
+  \caption{Bestimmung der Ausgleichsgeraden}
+\end{figure}
+
+Der Koeffizient ist \VAR{sci(epsilon)}
+
+\end{document}

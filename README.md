@@ -384,7 +384,7 @@ print(data_2['konzentration']['einheit'])
 Es lassen sich auch Listen aus Dictionaries machen:
 
 ```
->>> alles = [data_1, data_2]
+alles = [data_1, data_2]
 ```
 
 ### Control Flow: if und for
@@ -473,6 +473,9 @@ messung_celsius = [10, 20, 30, 40]
 messung_kelvin = []
 for i in messung_celsuis:
     messung_kelvin.append(i+273.15)
+
+print(messung_kelvin)
+> [283.15, 293.15, 303.15, 313.15]
 ```
 
 ### Die List comprehension
@@ -514,14 +517,16 @@ print( [0 for x in range(6)] )
 print( [[x, -x] for x in [1, 10]] )
 > [[1, -1], [10, -10]]
 
-#Das hier gibt alle Primzahlen aus
+# Das hier gibt alle Primzahlen aus
 print( [x for x in range(1,50) if not True in [x%i==0 for i in range(2,x)]] )
 > [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 ```
 
+Für das Anwenden von einfachen Rechenoperationen auf Listen lernen wir gleich noch das uarray kennen.
+
 ### Funktionen
 
-Funktionen sind Stücke von Code, die an einer anderen stelle aufgerufen werden können. Man kann ihnen Variablen übergeben und sie können auch Variablen (über 'return') zurückgeben.
+Funktionen sind Stücke von Code, die an einer anderen stelle aufgerufen werden können. Man kann ihnen Variablen übergeben und sie können auch Variablen (über `return`) zurückgeben.
 
 Allgemein:
 
@@ -546,9 +551,10 @@ def summe(liste):
 Anstatt des alles oben nochmal zu schreiben, ruft man die Funktion später mit `summe()` auf.
 
 ```
->>> liste_volumen = [100, 200, 100, 50]
->>> summe(liste_volumen)
-450
+liste_volumen = [100, 200, 100, 50]
+
+print( summe(liste_volumen) )
+> 450
 ```
 
 > Funktionen können andere Funktonen (auch sich selbst) aufrufen. Was gibt diese Funktion zurück?
@@ -671,21 +677,25 @@ Wenn die Variablen außerhalb ebenfalls ufloats sind, dann wird ihr Fehler auch 
 Allgemein ist es zu empfehlen, alle Datenreihen (auch die ohne Fehler) als uarray zu speichern. Wenn dann etwas ausgerechnet werden soll, wird der Fehler direkt immer mitgenommen und man spart sich eine Menge Zeit.
 
 ### Jupyterpc-Funktionen
-```jupyterpc``` Enthält die Funktionen ```fit(), table(), sci(), ufloat(), num(), sig()``` genaue Dokumentation über die Benutzung der Funktionen gibt es auf der wiki-Seite dieses repos oben rechts. Am besten schaut man sich dazu die Beispiele an.
-Eingebunden wird das package am besten mit ```from jupyterpc import *``` am Anfang des Skripts.
-- ```fit```: nimmt als input zwei listen (fehlerbehaftet oder nicht) und gibt die Koeffizienten m und b der gefitteten 
+`jupyterpc` Enthält die Funktionen `fit(), table(), sci(), ufloat(), num(), sig()` genaue Dokumentation über die Benutzung der Funktionen gibt es auf der wiki-Seite dieses repos oben rechts. Am besten schaut man sich dazu die Beispiele an.
+Eingebunden wird das package am besten mit `from jupyterpc import *` am Anfang des Skripts.  
+
+- `fit`: nimmt als input zwei listen (fehlerbehaftet oder nicht) und gibt die Koeffizienten m und b der gefitteten 
 Ausgleichsgerade aus.
 ```
->>> data_x = [1,2,3,4]
->>> data_y = [5,6,7,8]
->>> m, b = fit(data_x, data_y)
->>> m
-1.0+/-1.4197849550280142e-16
->>> b
-4.0+/-3.888241265752618e-16
+data_x = [1,2,3,4]
+data_y = [5,6,7,8]
+m, b = fit(data_x, data_y)
+
+print(m)
+> 1.0+/-1.4197849550280142e-16
+
+print(b)
+> 4.0+/-3.888241265752618e-16
 ```
 
-- ```table```: nimmt einen Titel und eine beliebige Anzahl an Listen und gibt eine von LaTeX-Lesbare Tabelle aus.
+- `table`: nimmt einen Titel und eine beliebige Anzahl an Listen und gibt eine von LaTeX-Lesbare Tabelle aus. Schreibt man also folgendes in die vorlage:
+
 ```
 \VAR{table(
   'Gemessene Werte für c=0.1',
@@ -697,26 +707,37 @@ Ausgleichsgerade aus.
   }
 )}
 ```
-- ```sci```: gibt einen Zahlenwert (auch fehlerbehaftet) in wissenschaflticher Schreibweise LaTeX-Lesbar aus.
+
+Wird es im Dokument zu:
+
 ```
->>> sci(122321)
-1.2232 \times 10^{5}
+\begin{table}
+  \caption{Gemessene Werte für c=0.1}
+  \begin{tabular}{l|l|l|l}
+
+  ...
+
+  \end{tabular}
+\end{table}
 ```
-- ```ulist``` produziert eine Liste von fehlerbehafteten Werten. Wichtig, wenn man damit weiter rechnen möchte.
+wobei alle Werte (mitsamt Fehler) eingesetzt werden.
+
+- `sci`: gibt einen Zahlenwert (auch fehlerbehaftet) in wissenschaflticher Schreibweise LaTeX-Lesbar aus.
 ```
-data_v = ulist([1,2,3,4], 1) # Alle Werte haben den Fehler 1
-data_t = ulist([5,2,3,4], [1, 0.2, 0.5, 0.1]) # Die Datenpunkte haben unterschiedliche Fehler
-data_s = [v*t for v,t in zip(data_v, data_t)] # data_s hat jetzt auch einen Fehlerwert. 
+print( sci(122321) )
+> 1.2232 \times 10^{5}
 ```
-- ```num``` gibt die **Werte** einer mit ```ulist``` generierten Liste aus.
+
+- ```num``` gibt die **Werte** eines `uarray` aus.
 ```
->>> num(data_t)
-[5,2,3,5]
+print( num(data_t) )
+> [5,2,3,5]
 ```
-- ```sig```gibt die **Fehler** einer mit ```ulist``` generierten Liste aus.
+
+- ```sig```gibt die **Fehler** eines eines `uarray` aus.
 ```
->>> sig(data_t)
-[1, 0.2, 0.5, 0.1]
+print( sig(data_t) )
+> [1, 0.2, 0.5, 0.1]
 ```
 
 beim nächsten Ausführen des Notebooks wird dann automatisch die Tabelle generiert.
@@ -730,7 +751,7 @@ beim nächsten Ausführen des Notebooks wird dann automatisch die Tabelle generi
 Einige Beispiele finden sich im gleichnamigen Ordner. 
 Zum Anschauen einfach das ganze Repository herunterladen und und die .ipynb-Dateien mit jupyter notebook öffnen.
 
-## Weiter Tutorials
+## Weitere Tutorials
 Die hier genannten Funktionen decken eigentlich alles ab, was man zum schreiben von Protokollen mit Jupyter benötigt. Ein etwas umfangreicheres Tutorial für die Grundlagen von Python bietet die Python-Dokumentation (habe ich selbst verwendet):  
 - Englisch: https://docs.python.org/3/tutorial/index.html
 - Deutsch: https://py-tutorial-de.readthedocs.io/de/python-3.3/

@@ -11914,9 +11914,34 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
+<li>Verwendete Programme/Bibliotheken</li>
 <li>Workflow</li>
-<li>Beispiel</li>
-<li>Python</li>
+<li>Vor-/Nachteile</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Verwendete-Programme/Bibliotheken">Verwendete Programme/Bibliotheken<a class="anchor-link" href="#Verwendete-Programme/Bibliotheken">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Jupyter Notebook mit Python<ul>
+<li>Matplotlib</li>
+<li>Uncertainties</li>
+<li>Jupyterpc</li>
+</ul>
+</li>
+<li>Texteditor mit LaTeX</li>
 </ul>
 
 </div>
@@ -11937,94 +11962,6 @@ a.anchor-link {
 <li><strong>Output</strong>: TeX-Datei mit eingesetzten Werten, kann von LaTeX normal verarbeitet werden<br>
 <code>Das Ergebnis ist 5 \si{\volt}\\</code>   </li>
 </ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Python-Code">Python Code<a class="anchor-link" href="#Python-Code">&#182;</a></h1><hr>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jupyterpc</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-
-<span class="n">data_x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="n">data_y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-
-<span class="n">sigma_x</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">sigma_y</span> <span class="o">=</span> <span class="mf">0.2</span>
-
-<span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">fit</span><span class="p">(</span><span class="n">data_x</span><span class="p">,</span> <span class="n">data_y</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m:&#39;</span><span class="p">,</span> <span class="n">sci</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;b:&#39;</span><span class="p">,</span> <span class="n">sci</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">table</span><span class="p">(</span><span class="s1">&#39;bestimmung von m&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">data_x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">data_y</span><span class="p">}))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">data_x</span><span class="p">,</span> <span class="n">data_y</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">sigma_x</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sigma_y</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_x</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">n</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="o">.</span><span class="n">n</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data_x</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;graph1.pdf&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="LaTeX-Template">LaTeX Template<a class="anchor-link" href="#LaTeX-Template">&#182;</a></h1><hr>
-
-<pre><code>Trägt man x gegen y auf, dann entspricht die Steigung der Ausgleichsgeraden m:
-
-\VAR{table('bestimmung von m', {'x':data_x, 'y':data_y})}
-
-\begin{equation}
-    \frac{dx}{dy} = m
-\end{equiation}
-\includegraphics{graph1.pdf}
-\begin{align}
-
-    m &amp;= \VAR{sci(m)}\\
-    b &amp;= \VAR{sci(b)}\\
-
-\end{align`</code></pre>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="LaTeX-Output">LaTeX Output<a class="anchor-link" href="#LaTeX-Output">&#182;</a></h1><hr>
-
-<pre><code>Trägt man x gegen y auf, dann entspricht die Steigung der Ausgleichsgeraden m:
-
-\begin{table}
-    \caption{bestimmung von m}
-    \centering
-    \begin{tabular}{l|l}
-        x &amp; y \\
-        $0.0$ &amp; $0.0$ \\
-        $1.0$ &amp; $1.1$ \\
-        $2.0$ &amp; $2.5$ \\
-        $3.0$ &amp; $2.7$ \\
-        $4.0$ &amp; $4.0$ \\
-    \end{tabular}
-\end{table}
-
-\begin{equation}
-    \frac{dx}{dy} = m
-\end{equiation}
-\includegraphics{graph1.pdf}
-\begin{align}
-
-    m &amp;= \VAR{0.97 \pm 0.10}\\
-    b &amp;= \VAR{0.13 \pm 0.25}
-
-\end{align}</code></pre>
 
 </div>
 </div>
@@ -12057,7 +11994,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section>
+</div>
 </div>
 </div>
 
