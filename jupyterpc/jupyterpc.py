@@ -13,11 +13,9 @@ def sci(num, decimals=4):
     if type(num) in ucvar:
         return num.format('L')
     elif type(num) in [float, int]:
-        float_str = str("{0:."+str(decimals)+"e}").format(num)
+        float_str = str("{0:."+str(decimals)+"g}").format(num)
         if "e" in float_str:
             base, exponent = float_str.split("e")
-            if int(exponent) in [-2, -1, 0, 1, 2]:
-                return str(float(base)*10**int(exponent))
             return "{0} \\times 10^{{{1}}}".format(base, int(exponent))
         else:
             return float_str
@@ -74,7 +72,7 @@ def table(name, data):
                 \\centering
                 \\begin{tabular}{%s}
             ''' % (str(name), tab_str)
-    name_str = '\t\t'+''.join(['%s & ' % (n) for n in data.keys()])[:-2]+'\\\\\n'
+    name_str = '\t\t'+''.join(['$ %s $ & ' % (n) for n in data.keys()])[:-2]+'\\\\\n'
     end = '''
                 \\end{tabular}
             \\end{table}
