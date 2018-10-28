@@ -85,6 +85,7 @@ def table(name, data):
     data_str = ''.join(data_str)
     return start+name_str+data_str+end
 
+
 def uplot(data_x, data_y, *args, fmt=' ', **kwargs):
     sigma_x = None
     sigma_y = None
@@ -100,6 +101,7 @@ def uplot(data_x, data_y, *args, fmt=' ', **kwargs):
     elif type(data_y[0]) in [float, int]:
         values_y = data_y
     plt.errorbar(values_x, values_y, xerr=sigma_x, yerr=sigma_y, *args, fmt=fmt, **kwargs)
+
 
 def render(template_path, output_path, variables):
     latex_jinja_env = jinja2.Environment(
