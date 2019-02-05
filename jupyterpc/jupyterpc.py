@@ -6,6 +6,7 @@ import uncertainties as uc
 from jinja2 import Template
 import jinja2
 import os
+import codecs
 
 ucvar = [uc.core.AffineScalarFunc, uc.core.Variable]
 
@@ -118,6 +119,6 @@ def render(template_path, output_path, variables):
     )
 
     template = latex_jinja_env.get_template(template_path)
-    with open(output_path, 'w') as out:
+    with codecs.open(output_path, 'w', encoding='utf-8') as out:
         out.write(template.render(variables))    
 

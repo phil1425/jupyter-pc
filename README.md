@@ -138,6 +138,18 @@ Notfalls kann auch der in der Datei `jupyterpc/jupyterpc.py` enthaltene Code dir
 - `scipy.odr` https://docs.scipy.org/doc/scipy/reference/odr.html  
 Sollten nach der oben durchgeführten Installation aber sowieso schon vorhanden sein.
 
+**Dieses Package Zitieren**
+Philipp Kollenz - jupyterpc 0.1.9 - Some Functions for making Tables and Graphics in Jupyter - https://github.com/phil1425/jupyter-pc  
+
+BibTeX:
+```
+@misc{kollenz:jupyterpc,
+  Author = "Philipp Kollenz",
+  Title = "jupyterpc - Some functions for making tables and graphics in Jupyter",
+  url = "\url{https://github.com/phil1425/jupyter-pc}"
+}
+```
+
 ## Workflow
 
 Das Protokoll wird in zwei Teilen geschrieben: Das LaTeX-Template und der Python-code.
