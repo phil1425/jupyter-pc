@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ffa4623-4004-477c-8353-7b9e11ea6fbb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Einführung.slides.html" beforeDir="false" afterPath="$PROJECT_DIR$/Einführung.slides.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beispiele/beispiel_1/beispiel_extinktion.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/beispiele/beispiel_1/beispiel_extinktion.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beispiele/beispiel_1/grafik_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/beispiele/beispiel_1/grafik_1.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jupyterpc/jupyterpc.py" beforeDir="false" afterPath="$PROJECT_DIR$/jupyterpc/jupyterpc.py" afterDir="false" />
-    </list>
+    <list default="true" id="8ffa4623-4004-477c-8353-7b9e11ea6fbb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,10 +12,10 @@
     <session id="-1469575007">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.3" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -52,7 +47,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jupyterpc/jupyterpc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1201">
+            <state relative-caret-position="15">
               <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
@@ -70,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="420">
               <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
@@ -101,10 +96,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1549" />
-    <option name="y" value="-493" />
-    <option name="width" value="1610" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
     <option name="height" value="813" />
   </component>
   <component name="ProjectView">
@@ -170,10 +164,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1549" y="-493" width="1610" height="813" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="813" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21648836" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21634954" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -196,13 +189,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Untitled.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Einführung.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -210,13 +196,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test.py">
+    <entry file="file://$PROJECT_DIR$/jupyterpc/jupyterpc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -227,10 +210,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jupyterpc/jupyterpc.py">
+    <entry file="file://$PROJECT_DIR$/tests/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1201">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        <state relative-caret-position="420">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Untitled.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="6" />
         </state>
       </provider>
     </entry>
