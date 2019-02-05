@@ -146,7 +146,7 @@ BibTeX:
 @misc{kollenz:jupyterpc,
   Author = "Philipp Kollenz",
   Title = "jupyterpc - Some functions for making tables and graphics in Jupyter",
-  url = "\url{https://github.com/phil1425/jupyter-pc}"
+  howpublished = "\url{https://github.com/phil1425/jupyter-pc}"
 }
 ```
 
