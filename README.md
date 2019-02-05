@@ -127,7 +127,7 @@ Am einfachsten installiert sich Anaconda: auf https://anaconda.org die Python3-d
 
 Wer anstatt des gesamten Conda-Paketes (z.b. wegen Speicherplatz) nur das wichtigste installieren möchte, kann auch auf https://python.org python3 und pip installieren. Dann lässt sich mit dem konsolen-command `pip install jupyter-notebook matplotlib numpy jinja2 scipy uncertainties` alles installieren.
 
-#### Das Jupyterpc-package
+### Das Jupyterpc-package
 
 Das Jupyterpc-package ist eine von mir geschriebene Sammlung an Funktionen, die beim erstellen der Protokolle helfen. Zur installation einfach eine Konsole öffnen und `pip install jupyterpc` eingeben.  
 
@@ -138,7 +138,7 @@ Notfalls kann auch der in der Datei `jupyterpc/jupyterpc.py` enthaltene Code dir
 - `scipy.odr` https://docs.scipy.org/doc/scipy/reference/odr.html  
 Sollten nach der oben durchgeführten Installation aber sowieso schon vorhanden sein.
 
-**Dieses Package Zitieren**
+**Dieses Package Zitieren**  
 Philipp Kollenz - jupyterpc 0.1.9 - Some Functions for making Tables and Graphics in Jupyter - https://github.com/phil1425/jupyter-pc  
 
 BibTeX:
